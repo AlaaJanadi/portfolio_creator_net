@@ -1,0 +1,109 @@
+@JWTAuth_HostAddress=http://localhost:5272
+@portfolioId=e35f9684-ad46-4823-8769-4fcab48e5352
+@summary=I am a Civil Engineer
+@token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWxhYSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiYjE2OGU3NmItYTZmOC00MTAxLTk2OTktMDhkZDkyZGJmMjE1IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImV4cCI6MTc0NzMwOTE3MywiaXNzIjoiQWxhYUFwcCIsImF1ZCI6IkFsYWFBcHBBdWRpZW5jZSJ9.DvtAgyzPe5v2Tld4_B0yTCeB01XMVUp1SDGygsdfeAWj5oC65cptJ3vCGSlp-8942iT_8ngH5fZdW7vBOdK9Jg
+
+
+###
+POST {{JWTAuth_HostAddress}}/api/auth/register
+Accept: application/json
+Content-Type: application/json
+
+{
+    "username": "Alaa",
+    "password": "Alaa8890"
+}
+
+###
+POST {{JWTAuth_HostAddress}}/api/auth/login
+Accept: application/json
+Content-Type: application/json
+
+{
+    "username": "alaa",
+    "password": "Alaa8890"
+}
+
+###
+Post {{JWTAuth_HostAddress}}/api/auth/refresh-token
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userId": "1",
+  "refreshToken": ""
+}
+
+###
+GET {{JWTAuth_HostAddress}}/api/portfolio/{{portfolioId}}
+Accept: application/json
+Content-Type: application/json
+
+### 
+POST {{JWTAuth_HostAddress}}/api/portfolio/{{portfolioId}}/professional-summary?summary={{summary}}
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+PUT {{JWTAuth_HostAddress}}/api/portfolio/{{portfolioId}}/is-public
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{JWTAuth_HostAddress}}/api/portfolio/PersonalInfo/{{portfolioId}}
+Accept: application/json
+Content-Type: application/json
+
+###
+POST {{JWTAuth_HostAddress}}/api/portfolio/PersonalInfo/{{portfolioId}}
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "firstName": "Alaa",
+    "lastName": "Al Janadi",
+    "email": "eng.alaa.janadi@gmail.com",
+    "phoneNumber": "068120533465",
+    "country": "Austria",
+    "city": "Vienna",
+    "address": "Pfalzgasse 7",
+    "postalCode": "1220",
+    "githubUrl": "https://github.com/AlaaJanadi",
+    "linkedInUrl": "https://www.linkedin.com/in/alaa-al-janadi-87b747115/"
+}
+
+################## Education ##################
+
+###
+
+GET {{JWTAuth_HostAddress}}/api/portfolio/Education/{{portfolioId}}
+Accept: application/json
+Content-Type: application/json
+
+###
+GET {{JWTAuth_HostAddress}}/api/portfolio/Education/{{portfolioId}}/97C89216-C13E-4A3E-48F9-08DD92DC93D2
+Accept: application/json
+Content-Type: application/json
+
+###
+POST {{JWTAuth_HostAddress}}/api/portfolio/Education/{{portfolioId}}
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "schoolName": "Everyone Codes gGmbH (Vienna, Austria)",
+    "description": "Java Advanced Training Program",
+    "startDate": "2023-01-18",
+    "endDate": "2023-07-29",
+    "details": [
+      "Technologies: Spring Boot, Docker, MySQL, MongoDB, Git, REST, Security",
+      "Agile team projects with Scrum methodology",
+      "Completed practical backend exams and project presentations"
+    ]
+}
+
+###
